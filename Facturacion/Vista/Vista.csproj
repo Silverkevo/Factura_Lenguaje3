@@ -89,5 +89,11 @@
   <ItemGroup>
     <None Include="Resources\permission.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ojo1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
