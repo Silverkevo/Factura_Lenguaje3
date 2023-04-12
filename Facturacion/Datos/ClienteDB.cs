@@ -166,6 +166,32 @@ namespace Datos
 
 
 
+        public DataTable DevolverClientePorNombre(string nombre)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" SELECT * FROM cliente WHERE Nombre LIKE '%" + nombre + "%'; ");
+                using (MySqlConnection _conexion = new MySqlConnection(cadena))
+                {
+                    _conexion.Open();
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        dt.Load(dr);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return dt;
+
+
+        }
+
     }
 
 }

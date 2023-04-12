@@ -49,7 +49,7 @@ namespace Datos
                 }
 
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
             }
             return user;

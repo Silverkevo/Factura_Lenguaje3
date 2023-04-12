@@ -36,7 +36,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return inserto;
@@ -68,7 +68,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return edito;
@@ -94,7 +94,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return elimino;
@@ -118,7 +118,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return datatable;
@@ -187,5 +187,28 @@ namespace Datos
             return producto;
         }
 
+        public DataTable DevolverPorDescripcion(string descripcion)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" SELECT * FROM producto WHERE Descripcion LIKE '%" + descripcion + "%' ");
+                using (MySqlConnection _conexion = new MySqlConnection(cadena))
+                {
+                    _conexion.Open();
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        dataTable.Load(dr);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return dataTable;
+        }
     }
 }
